@@ -1,0 +1,21 @@
+.burger__top {
+    transition: transform ease .2s;
+}
+.burger__middle {
+    transition: opacity ease .2s;
+}
+.burger__bottom {
+    transition: transform ease .2s;
+}
+
+.burger-active {
+    .burger__top {
+        transform: rotate(45deg) translateX(17%);
+    }  
+    .burger__middle {
+        opacity: 0;
+    }
+    .burger__bottom {
+        transform: rotate(-45deg) translate(-55%, -10%);
+    }
+}

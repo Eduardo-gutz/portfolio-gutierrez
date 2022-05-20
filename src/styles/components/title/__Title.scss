@@ -1,0 +1,9 @@
+.title {
+    font-size: 2rem;
+    font-weight: 500;
+    color: $text-color;
+    
+    &--secondary {
+        color: $secondary-color;
+    }
+}

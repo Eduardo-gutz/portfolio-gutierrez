@@ -1,0 +1,151 @@
+@import '../../utilities/_mixins';
+@import '../../utilities/_querys';
+
+.home {
+    display: flex;
+    align-items: center;
+    align-content: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    
+    .monitor {
+        z-index: 4;
+    }
+    
+    &__main {
+        width: min(73.5%, 32.8rem);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        @include md {
+            width: min(51%, 32.8rem);
+            margin-right: 2rem;
+        }
+        @include lg {
+            align-items: flex-end;
+            margin-right: 5.3rem;
+        }
+    }
+    &__name {
+        width: 100%;
+        
+        margin-top: 5.68rem;
+        margin-bottom: 1.12rem;
+        
+        font-size: 3rem;
+        font-weight: 500;
+        text-align: left;
+        letter-spacing: .4rem;
+        line-height: 3.68rem;
+        
+        @include sm {
+            margin-top: 0;
+        }
+    }
+    
+    &__subtitle {
+        min-width: 19.6rem;
+        margin-bottom: 2.5rem;
+        
+        font-size: 1.5rem;
+        font-weight: 400;
+        letter-spacing: 0.1rem;
+        
+        @include lg {
+            margin-bottom: 5.3rem;
+        }
+    }
+
+    &__wave {
+        max-width: 100%;
+        width: min(100%, 45rem);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+    &__logos {
+        @include flex_row;
+        width: min(100%, 25.12rem);
+        height: 3rem;
+        margin-bottom: 3rem;
+
+        @include lg {
+            height: 4rem;
+        }
+    }
+
+    @include sm {
+        align-content: center;
+        .monitor {
+            width: min(60%, 26.9rem);
+            .monitor__image {
+                width: 100%
+            }
+        }
+    }
+    @include md {
+        align-content: center;
+        .monitor {
+            width: 40%;
+        }
+    }
+    @media (min-width: 1250px) {
+        align-content: center;
+    }
+
+}    
+
+
+.logo {
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+
+    @include lg {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.socials {
+    @include flex_row;
+    width: 12rem;
+    height: 3rem;
+    position: absolute;
+    bottom: 1.12rem;
+    z-index: 2;
+
+    &__social {
+        height: 100%;
+
+        img {
+            height: 125%;
+            width: 100%;
+        }
+    }
+
+    @include sm {
+        left: 2rem;
+    }
+    @include md {
+        width: auto;
+        height: 11.7rem;
+        flex-direction: column;
+        bottom: 1.12rem;
+
+        img {
+            height: 3.6rem;
+            width: 100%;
+        }
+    }
+}

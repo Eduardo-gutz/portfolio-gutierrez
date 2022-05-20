@@ -1,0 +1,7 @@
+@mixin loggerBorder {
+    border: 1px solid red;
+}
+
+@mixin loggerComponent {
+    background-color: skyblue;
+}

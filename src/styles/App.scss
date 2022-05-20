@@ -1,0 +1,40 @@
+@import './modules/Home/_Home';
+@import './components/navbar/_Navbar';
+@import './utilities/_variables';
+@import './components/card/_Card';
+@import './modules/About/_About';
+@import './components/title/_Title';
+@import './components/paragraph/_Paragraph';
+@import './components/divider/_Divider';
+
+.App {
+  text-align: center;
+  background: radial-gradient(circle at 50% 120%, #181294, transparent) $primary-color;
+  width: 100vw;
+  min-height: 100vh;
+  color: $text-color;
+}
+.slide-enter,
+.slide-exit {
+  transition: transform 1000ms ease-out;
+}
+
+.slide-enter {
+  transform: translateX(100%);
+}
+
+.slide-enter.slide-enter-active {
+  transform: translateX(0%);
+}
+
+.slide-exit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateX(0%);
+}
+
+.slide-exit-active {
+  transform: translateX(-100%);
+}

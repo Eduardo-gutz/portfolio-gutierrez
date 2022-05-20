@@ -1,0 +1,29 @@
+$finalHeight: null !default;
+
+@function openMenu($height, $seconds, $time) {
+    $finalHeight: $height;
+    @return openMenuAnimation $seconds $time;
+}
+
+@function closeMenu($height, $seconds, $time) {
+    $finalHeight: $height;
+    @return closeMenuAnimation $seconds $time;
+}
+
+@keyframes openMenuAnimation {
+    0% {
+        height: 0px;
+    };
+    100% {
+        height: $finalHeight;
+    }
+}
+
+@keyframes closeMenuAnimation {
+    0% {
+        height: $finalHeight;
+    };
+    100% {
+        height: 0px;
+    }
+}
