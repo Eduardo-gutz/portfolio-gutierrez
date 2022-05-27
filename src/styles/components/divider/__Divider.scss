@@ -1,6 +1,25 @@
+@import '../../utilities/_querys';
+
 .divider {
     width: 100%;
-    height: 16.75rem;
+    transform: translateY(-40%);
     position: absolute;
     background: url(../../../assets/svg/waveaboutme.svg) bottom left 5%;
+    padding: 2rem;
+    height: 26.75rem;
+
+    @include lg {
+    background: url(../../../assets/svg/waveaboutme.svg) bottom left/100% no-repeat;
+    }
+
+    &__cta {
+        position: absolute;
+        right: 15vw;
+        top: 43%;
+
+        @include md {
+            right: 10%;
+            top: 23%;
+        }
+    }
 }

@@ -1,21 +1,40 @@
+@import '../../utilities/_querys';
+
 .presentation {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 93%;
     object-fit: cover;
+    max-width: 80rem;
 
     margin: 0 auto;
     z-index: 2;
+
+    @include md {
+        justify-content: space-around;
+        align-items: flex-start;
+        padding-top: 8rem;
+    }
 
     img {
         width: 91%;
         max-width: 29.8rem;
         margin-top: 4.12rem;
+
+        @include md {
+            width: 39%;
+            margin-top: 1.12rem;
+        }
     }
 
     &__text {
         padding: 2rem;
+        max-width: 33.8rem;
+
+        @include md {
+            padding: 2.5rem;
+        }
     }
 
     .card {
@@ -24,24 +43,48 @@
 }
 
 .skills {
-    // @include translateUp($translate: -330px);
+    position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1rem;
-    border: $logger;
     width: 93%;
     margin: auto;
+    margin-top: 5rem;
     text-align: left;
+
+    @include md {
+        row-gap: 2rem;
+        column-gap: 2.87rem;
+    }
 
     &__skill {
         display: grid;
         grid-template-columns: 30% 70%;
         column-gap: 1.5rem;
         padding: 1.4rem;
+        max-width: 37.5rem;
+
+        @include sm {
+            width: 44vw;
+        }
 
         img {
             width: 100%;
             grid-row: span 2;
+            justify-self: center;
+
+            @include md {
+                width: 57%;
+            }
+        }
+    }
+    &__title-section {
+        width: 100%;
+
+        @include md {
+            padding-left: 8rem;
         }
     }
     &__title {
@@ -52,5 +95,17 @@
     &__description {
         grid-column: 2;
         grid-row: 2;
+    }
+
+    &__cta {
+        display: flex;
+        margin: 1.5rem auto;
+        width: 100%;
+        justify-content: center;
+
+        @include md {
+            padding-right: 15.4rem;
+            justify-content: flex-end;
+        }
     }
 }

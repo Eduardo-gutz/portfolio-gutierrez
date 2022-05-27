@@ -21,17 +21,24 @@ const About = () => {
                         Soy una programador autodidacta, tome interés por la programación ya hace 3 años, pero comencé con el lenguaje de Python; fue hasta hace un año y medio que entre de lleno al front end y que es a lo que me quiero dedicar, he realizado algunas practicas con las cuales he ganado experiencia tanto en el maquetado de html y css, así como en la programación con Javascript, VueJs y React con el cual tengo mayor experiencia.
                     </Paragraph>
                     <Paragraph>
-                        Soy una programador autodidacta, tome interés por la programación ya hace 3 años, pero comencé con el lenguaje de Python; fue hasta hace un año y medio que entre de lleno al front end y que es a lo que me quiero dedicar, he realizado algunas practicas con las cuales he ganado experiencia tanto en el maquetado de html y css, así como en la programación con Javascript, VueJs y React con el cual tengo mayor experiencia.
+                        Soy una programador autodidacta, tome interés por la programación ya hace 3 años, pero comencé con el lenguaje de Python;
                     </Paragraph>
                 </div>
             </Card>
-            <CTALink />
         </main>
-        <Divider />
+        <Divider cta={
+            <CTALink
+                label={'Contactame'}
+                icon={'right-arrow-alt'}
+                action={() => console.log('click en el call to action')}
+            />
+        }/>
         <section className='skills'>
-            <Title secondary>
-                Mis Habilidades
-            </Title>
+            <div className="skills__title-section">
+                <Title secondary>
+                    Mis Habilidades
+                </Title>
+            </div>
             <SkillCard
                 img={ logosvg }
                 title='React.js'
@@ -57,6 +64,18 @@ const About = () => {
                 title='React.js'
                 description='Una biblioteca de JavaScript para construir interfaces de usuario'
             />
+            <SkillCard
+                img={ logosvg }
+                title='React.js'
+                description='Una biblioteca de JavaScript para construir interfaces de usuario'
+            />
+            <div className="skills__cta">
+                <CTALink
+                    label={'Descargar Curriculum'}
+                    action={() => console.log('click en el call to action')}
+                    secondary
+                />
+            </div>
         </section>
         </>
     )
