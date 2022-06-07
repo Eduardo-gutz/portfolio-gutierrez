@@ -10,7 +10,7 @@ const Navbar = () => {
     const menuItems =  [
         { name: 'Inicio', link: '/' },
         { name: 'Acerca de mi', link: '/about' },
-        { name: 'Proyectos', link: '' },
+        { name: 'Proyectos', link: '/projects' },
         { name: 'Contacto', link: '' }
     ]
 

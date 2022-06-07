@@ -1,0 +1,87 @@
+@import '../../utilities/_querys';
+
+@mixin tab {
+    align-items: center;
+    display: flex;
+    position: absolute;
+    background-color: $secondary-color-transparent;
+    width: 96%;
+    backdrop-filter: blur(4px);
+    transition: transform .3s ease-in-out;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));;
+    padding-top: 4.4rem;
+    width: 93%;
+    max-width: 71.5rem;
+    margin: 0 auto;
+    column-gap: 2rem;
+    row-gap: 1.5rem;
+
+    .card {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    &__project {
+        width: 100%;
+        position: relative;
+        max-width: 22.5rem;
+        height: 13rem;
+        padding: .5rem;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @include hover {
+            .projects__title {
+                transform: translateY(-100%);
+            }
+            .projects__cta {
+                transform: translateY(100%);
+            }
+            &:hover {
+                .projects__title {
+                    transform: translateY(0%);
+                }
+    
+                .projects__cta {
+                    transform: translateY(0%);
+                }
+            }
+        }
+    }
+
+    &__title {
+        @include tab;
+        height: 3rem;
+        padding: 0rem 1.5rem;
+        justify-content: flex-start;
+        top: 0;
+        font-size: 1.2rem;
+    }
+
+    &__cta {
+        @include tab;
+        height: 2rem;
+        justify-content: flex-end;
+        bottom: 0;
+    }
+
+    .title {
+        grid-column: 1 / -1;
+        justify-self: start;
+        margin-left: 1.5rem;
+    }
+
+    .cta {
+        grid-column: 1 / -1;
+        justify-self: center;
+        margin: 1rem 0;
+    }
+}

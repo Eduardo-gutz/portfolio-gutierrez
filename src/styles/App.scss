@@ -7,6 +7,7 @@
 @import './components/paragraph/_Paragraph';
 @import './components/divider/_Divider';
 @import './components/cta-link/_CTALink';
+@import './modules/Projects/_Projects';
 
 .App {
   text-align: center;
@@ -14,6 +15,7 @@
   width: 100vw;
   min-height: 100vh;
   color: $text-color;
+  overflow-y: hidden;
 }
 .slide-enter,
 .slide-exit {

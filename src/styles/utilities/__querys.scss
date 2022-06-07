@@ -39,3 +39,9 @@ $screen-xl-max: 5000px;
     @content;
   }
 }
+
+@mixin hover {
+  @media (any-hover: hover) {
+    @content;
+  }
+}
