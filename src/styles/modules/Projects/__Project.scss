@@ -1,0 +1,23 @@
+.devices {
+    --move-left: 3px;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 0 auto;
+    width: 9.37rem;
+    height: 3rem;
+    font-size: 2.4rem;
+
+    &::after {
+        content: '';
+        display: block;
+        width: 2rem;
+        height: .2rem;
+        background-color: $text-color;
+        position: absolute;
+        bottom: 0;
+        left: var(--move-left);
+        transition: left .3s ease-in-out;
+    }
+}

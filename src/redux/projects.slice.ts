@@ -13,7 +13,6 @@ const projectsSlice = createSlice({
   }
 })
 
-// Action creators are generated for each case reducer function
 export const { setProjects } = projectsSlice.actions
 
 export default projectsSlice.reducer
