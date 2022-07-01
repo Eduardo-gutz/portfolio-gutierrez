@@ -1,5 +1,5 @@
 export interface Project {
-    descrption: string
+    description: string
     id: string
     images: {
         desktop: string[]

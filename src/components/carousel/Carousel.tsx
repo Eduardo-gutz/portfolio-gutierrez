@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface CarouselProps {
     items: string[]
@@ -18,6 +18,10 @@ const Carousel = ({ items }: CarouselProps) => {
             setCurrent(items.length - 1);
         }
     }
+
+    useEffect(() => {
+        setCurrent(0)
+    }, [items]);
     return (
         <>
         <div className="carousel">

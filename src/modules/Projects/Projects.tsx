@@ -27,10 +27,10 @@ const Projects = () => {
     }, [dispatch, projects.projects.length]);
     
     return(
-        <main className="projects">
-            {projectSelected ?
-                <ProjectView project={projectSelected} />
-            :
+        projectSelected ?
+            <ProjectView project={projectSelected} goback={() => setProjectSelected(undefined)} />
+        :
+            <main className="projects">
                 <>
                     <Title>
                         Proyectos
@@ -56,8 +56,7 @@ const Projects = () => {
                         secondary
                     />
                 </>
-            }
-        </main>
+            </main>
     )
 }
 
