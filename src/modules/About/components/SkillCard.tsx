@@ -12,9 +12,6 @@ const SkillCard = ({ img, title, description }: SkillCardProps) => {
             <section className='skills__skill'>
                 <img src={ img } alt="react logo" />
                 <p className='skills__title'>{ title }</p>
-                <p className='skills__description'>
-                    {description}
-                </p>
             </section>
         </Card>
     )

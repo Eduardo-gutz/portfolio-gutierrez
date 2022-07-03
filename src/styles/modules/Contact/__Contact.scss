@@ -1,0 +1,51 @@
+@import '../../utilities/_querys';
+
+.contact {
+    padding: 4.3rem 0;
+    text-align: left;
+
+    .title {
+        margin-left: 8%;
+        margin-bottom: 2.3rem;
+    }
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 85.3vw;
+    max-width: 59.8rem;
+    padding: 1.13rem 2rem;
+
+    @include md {
+        padding-inline: 8%;
+    }
+
+    &__fields {
+        width: 100%;
+        max-width: 24.75rem;
+    }
+
+
+    &__socials {
+        @include md {
+            margin-top: 3rem;
+        }
+    }
+
+    .cta {
+        margin: 0 auto;
+        margin-top: 1.12rem;
+    }
+
+    .socials {
+        position: initial;
+        margin: 1.12rem auto;
+
+        @include md {
+            width: 12.7rem;
+            flex-direction: row;
+        }
+    }
+}

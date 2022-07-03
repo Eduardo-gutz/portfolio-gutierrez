@@ -1,0 +1,43 @@
+@mixin input {
+    width: 100%;
+    border-radius: .5rem;
+    border: none;
+    padding: 0 .5rem;
+    font-size: 1.12rem;
+}
+
+.field {
+    width: 100%;
+    margin-top: 1.12rem;
+    position: relative;
+    
+    &__label {
+        display: block;
+        width: 100%;
+        text-align: left;
+        font-size: 1rem;
+        margin-bottom: .5rem;
+    }
+
+    &__input {
+        @include input;
+        height: 2.5rem;
+    }
+
+    &__area {
+        @include input;
+        height: 8.3rem;
+        padding: 1rem;
+    }
+}
+
+.error {
+    position: absolute;
+    top: 100%;
+    left: 2%;
+    height: 1.5rem;
+    background-color: #991211;
+    padding-inline: 1rem;
+    border-radius: 0 0 .75rem .75rem;
+    font-weight: 600;
+}

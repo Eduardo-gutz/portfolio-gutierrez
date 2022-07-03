@@ -11,7 +11,7 @@ const Navbar = () => {
         { name: 'Inicio', link: '/' },
         { name: 'Acerca de mi', link: '/about' },
         { name: 'Proyectos', link: '/projects' },
-        { name: 'Contacto', link: '' }
+        { name: 'Contacto', link: '/contact' }
     ]
 
     const hidenMenu = (isActive: boolean) => {

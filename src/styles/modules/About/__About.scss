@@ -56,28 +56,24 @@
 
     @include md {
         row-gap: 2rem;
-        column-gap: 2.87rem;
+        column-gap: 1.4rem;
     }
 
     &__skill {
-        display: grid;
-        grid-template-columns: 30% 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         column-gap: 1.5rem;
         padding: 1.4rem;
-        max-width: 37.5rem;
+        max-width: 18rem;
 
         @include sm {
             width: 44vw;
         }
 
         img {
-            width: 100%;
-            grid-row: span 2;
-            justify-self: center;
-
-            @include md {
-                width: 57%;
-            }
+            width: 60%;
         }
     }
     &__title-section {
@@ -88,13 +84,7 @@
         }
     }
     &__title {
-        grid-column: 2;
-        grid-row: 1;
-    }
-
-    &__description {
-        grid-column: 2;
-        grid-row: 2;
+        font-size: 1.5rem;
     }
 
     &__cta {
