@@ -66,14 +66,12 @@
         align-items: center;
         column-gap: 1.5rem;
         padding: 1.4rem;
-        max-width: 18rem;
-
-        @include sm {
-            width: 44vw;
-        }
+        width: 18rem;
+        height: 15rem;
 
         img {
             width: 60%;
+            height: 100%;
         }
     }
     &__title-section {

@@ -3,10 +3,9 @@ import Card from "../../../components/card/Card"
 interface SkillCardProps {
     img: string
     title: string
-    description: string
 }
 
-const SkillCard = ({ img, title, description }: SkillCardProps) => {
+const SkillCard = ({ img, title }: SkillCardProps) => {
     return (
         <Card>
             <section className='skills__skill'>

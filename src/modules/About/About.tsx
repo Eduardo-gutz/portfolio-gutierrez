@@ -2,12 +2,40 @@ import profileImage from '../../assets/images/imagenperfilejemplo.png';
 import Card from '../../components/card/Card';
 import Title from '../../components/title/Title';
 import Paragraph from '../../components/paragraph/Paragraph';
-import logosvg from '../../assets/svg/react-2.svg';
 import SkillCard from './components/SkillCard';
 import Divider from '../../components/divider/Divider';
 import CTALink from '../../components/cta-link/CTALink';
+import { useNavigate } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
+import { downloadCurriculum, getSkills } from '../../firebase/skills';
+import { portfolioContext } from '../../context/portfolio';
 
 const About = () => {
+    const navigate = useNavigate();
+    const { skills, setSkillsToContext } = useContext(portfolioContext);
+
+    const downloadCV = async () => {
+        const url = await downloadCurriculum();
+        const anchor = document.createElement('a');
+        anchor.setAttribute('hidden', 'true');
+        anchor.setAttribute('download', 'Eduardo_Gutierrez.pdf');
+        anchor.setAttribute('target', '_blank');
+        anchor.setAttribute('href', url);
+        
+        anchor.click()
+        
+    }
+
+    useEffect(() => {
+        const getAllSkills = async () => {
+            const skills = await getSkills()
+            setSkillsToContext(skills)
+        }
+
+        if(!skills.length) {
+            getAllSkills()
+        }
+    }, [setSkillsToContext, skills.length]);
     return (
         <>
         <main className="presentation">
@@ -30,7 +58,7 @@ const About = () => {
             <CTALink
                 label={'Contactame'}
                 icon={'right-arrow-alt'}
-                action={() => console.log('click en el call to action')}
+                action={() => navigate('/contact')}
             />
         }/>
         <section className='skills'>
@@ -39,40 +67,17 @@ const About = () => {
                     Mis Habilidades
                 </Title>
             </div>
-            <SkillCard
-                img={ logosvg }
-                title='React.js'
-                description='Una biblioteca de JavaScript para construir interfaces de usuario'
-            />
-            <SkillCard
-                img={ logosvg }
-                title='React.js'
-                description='Una biblioteca de JavaScript para construir interfaces de usuario'
-            />
-            <SkillCard
-                img={ logosvg }
-                title='React.js'
-                description='Una biblioteca de JavaScript para construir interfaces de usuario'
-            />
-            <SkillCard
-                img={ logosvg }
-                title='React.js'
-                description='Una biblioteca de JavaScript para construir interfaces de usuario'
-            />
-            <SkillCard
-                img={ logosvg }
-                title='React.js'
-                description='Una biblioteca de JavaScript para construir interfaces de usuario'
-            />
-            <SkillCard
-                img={ logosvg }
-                title='React.js'
-                description='Una biblioteca de JavaScript para construir interfaces de usuario'
-            />
+            { skills.map((skill) =>
+                <SkillCard
+                    key={skill.name}
+                    img={ skill.image }
+                    title={ skill.name }
+                />
+            ) }
             <div className="skills__cta">
                 <CTALink
                     label={'Descargar Curriculum'}
-                    action={() => console.log('click en el call to action')}
+                    action={ downloadCV }
                     secondary
                 />
             </div>

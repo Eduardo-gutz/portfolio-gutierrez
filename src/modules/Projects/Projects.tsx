@@ -1,30 +1,28 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useContext, useEffect, useState } from "react";
 import Card from "../../components/card/Card";
 import CTALink from "../../components/cta-link/CTALink";
 import Title from "../../components/title/Title";
+import { portfolioContext } from "../../context/portfolio";
 import { getProyects } from "../../firebase/projects";
 import { Project } from "../../interfaces/projects";
-import { setProjects } from "../../redux/projects.slice";
-import { RootState } from "../../redux/store";
 import ProjectView from "./Project";
 
 const Projects = () => {
-    const dispatch = useDispatch();
-    const projects = useSelector((state: RootState) => state.projects);
     const [projectSelected, setProjectSelected] = useState<Project>();
+    const { projects, setProjectsToContext } = useContext(portfolioContext);
 
     useEffect(() => {
         const getAllProjects = async () => {
             const projects = await getProyects();
-
-            dispatch(setProjects(projects));
+            console.log('get projects');
+            
+            setProjectsToContext(projects)
         }
 
-        if(!projects.projects.length) {
+        if(!projects.length) {
             getAllProjects();
         }
-    }, [dispatch, projects.projects.length]);
+    }, [projects.length, setProjectsToContext]);
     
     return(
         projectSelected ?
@@ -35,8 +33,8 @@ const Projects = () => {
                     <Title>
                         Proyectos
                     </Title>
-                    {projects.projects.map((project) => (
-                        <Card>
+                    {projects.map((project) => (
+                        <Card key={ project.id }>
                             <section className='projects__project'>
                                 <span className='projects__title'>{ project.projectName }</span>
                                 <img src={project.images.desktop[0]} alt={project.projectName} />
@@ -50,11 +48,13 @@ const Projects = () => {
                             </section>
                         </Card>
                     ))}
-                    <CTALink
-                        label={'Mas Proyectos'}
-                        action={() => console.log('click en el call to action')}
-                        secondary
-                    />
+                    { projects.length > 9 &&
+                        <CTALink
+                            label={'Mas Proyectos'}
+                            action={() => console.log('click en el call to action')}
+                            secondary
+                        />
+                    }
                 </>
             </main>
     )

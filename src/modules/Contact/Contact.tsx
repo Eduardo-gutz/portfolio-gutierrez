@@ -9,6 +9,11 @@ import linkedin from '../../assets/svg/linkedinWhite.svg';
 import github from '../../assets/svg/githubWhite.svg';
 import instagram from '../../assets/svg/intsagramWhite.svg';
 import { useForm, Controller } from 'react-hook-form';
+import { downloadCurriculum } from "../../firebase/skills";
+import emailjs from '@emailjs/browser';
+import { enviroments } from "../../enviroment/global";
+import Alert from "../../components/alert/Alert";
+import { useState } from "react";
 
 interface formData {
     name: string
@@ -17,13 +22,56 @@ interface formData {
 }
 
 const Contact = () => {
-    const { control, handleSubmit } = useForm<formData>();
+    const { control, handleSubmit,reset } = useForm<formData>();
+    const [ sendMessage, setSendMessage ] = useState<string>('')
 
-    const onFormSubmit = (data: formData) => {
-        console.log(data);
+    const onFormSubmit = async (data: formData) => {
+        try{
+            const email = await emailjs.send(enviroments.serviceMail, enviroments.templMail, {...data}, enviroments.emailjsPublic)
+
+            console.log(email);
+            
+            if(email.text === 'OK') {
+                setSendMessage('succes')
+                reset()
+            } else {
+                setSendMessage('error')
+            }
+        } catch(error) {
+            setSendMessage('error')
+        }
+    }
+
+    const downloadCV = async () => {
+        const url = await downloadCurriculum();
+        const anchor = document.createElement('a');
+        anchor.setAttribute('hidden', 'true');
+        anchor.setAttribute('download', 'Eduardo_Gutierrez.pdf');
+        anchor.setAttribute('target', '_blank');
+        anchor.setAttribute('href', url);
+        
+        anchor.click()
+        
     }
     return (
         <main className="contact">
+            <Alert
+                open={ sendMessage === 'succes' }
+                action={ () => setSendMessage('') }
+                onClose={ () => setSendMessage('') }
+                text='Se ha enviado el mensaje correctamente gracias por contactarme'
+                textButton="Aceptar"
+                title="Mensaje Enviado"
+                type='succes'
+            />
+            <Alert
+                open={ sendMessage === 'error' }
+                action={ () => setSendMessage('') }
+                onClose={ () => setSendMessage('') }
+                text='Opps! Hubo un error al enviar el mensaje, intentalo nuevamente'
+                textButton="Aceptar"
+                type='error'
+            />
             <Title>
                 Contactame
             </Title>
@@ -112,8 +160,13 @@ const Contact = () => {
                                 <img src={linkedin} alt="linkedin link" />
                             </a>
                         </div>
+                        <CTALink
+                            label={'Descargar Curriculum'}
+                            action={() => downloadCV()}
+                            secondary
+                        />
                     </div>
-                </div>
+                    </div>
             </Card>
         </main>
     )
