@@ -40,6 +40,7 @@
 
     &.active {
         display: flex;
+        top: 3.25rem;
         animation: openMenu(18.2rem, .5s, ease);
     }
 

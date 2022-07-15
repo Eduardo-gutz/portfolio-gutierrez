@@ -1,4 +1,4 @@
-import Title from "../../../components/title/Title"
+import Title from "../title/Title"
 
 interface SubtitleProps {
     text: string

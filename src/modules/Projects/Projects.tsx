@@ -6,10 +6,12 @@ import { portfolioContext } from "../../context/portfolio";
 import { getProyects } from "../../firebase/projects";
 import { Project } from "../../interfaces/projects";
 import ProjectView from "./Project";
+import texts from '../../assets/texts.json';
 
 const Projects = () => {
     const [projectSelected, setProjectSelected] = useState<Project>();
     const { projects, setProjectsToContext } = useContext(portfolioContext);
+    const t = texts.projects;
 
     useEffect(() => {
         const getAllProjects = async () => {
@@ -31,7 +33,7 @@ const Projects = () => {
             <main className="projects">
                 <>
                     <Title>
-                        Proyectos
+                        { t.title }
                     </Title>
                     {projects.map((project) => (
                         <Card key={ project.id }>
@@ -40,7 +42,7 @@ const Projects = () => {
                                 <img src={project.images.desktop[0]} alt={project.projectName} />
                                 <span className="projects__cta">
                                     <CTALink
-                                        label={'Ver proyecto'}
+                                        label={ t.buttons.project }
                                         action={() => setProjectSelected(project)}
                                         secondary
                                     />
@@ -48,9 +50,9 @@ const Projects = () => {
                             </section>
                         </Card>
                     ))}
-                    { projects.length > 9 &&
+                    { false &&
                         <CTALink
-                            label={'Mas Proyectos'}
+                            label={ t.buttons.more }
                             action={() => console.log('click en el call to action')}
                             secondary
                         />

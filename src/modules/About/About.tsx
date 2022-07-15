@@ -1,4 +1,4 @@
-import profileImage from '../../assets/images/imagenperfilejemplo.png';
+// import profileImage from '../../assets/images/photoabout.png';
 import Card from '../../components/card/Card';
 import Title from '../../components/title/Title';
 import Paragraph from '../../components/paragraph/Paragraph';
@@ -9,10 +9,13 @@ import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import { downloadCurriculum, getSkills } from '../../firebase/skills';
 import { portfolioContext } from '../../context/portfolio';
+import texts from '../../assets/texts.json';
+import Subtitle from '../../components/subtitle/Subtitle';
 
 const About = () => {
     const navigate = useNavigate();
     const { skills, setSkillsToContext } = useContext(portfolioContext);
+    const t = texts.about
 
     const downloadCV = async () => {
         const url = await downloadCurriculum();
@@ -39,32 +42,37 @@ const About = () => {
     return (
         <>
         <main className="presentation">
-            <img src={profileImage} alt="eduardo gutierrez" />
+            {/*<img src={ profileImage } alt="eduardo gutierrez" />*/}
             <Card>
                 <div className="presentation__text">
                     <Title>
-                        Acerca de mi
+                        { t.title }
                     </Title>
                     <Paragraph>
-                        Soy una programador autodidacta, tome interés por la programación ya hace 3 años, pero comencé con el lenguaje de Python; fue hasta hace un año y medio que entre de lleno al front end y que es a lo que me quiero dedicar, he realizado algunas practicas con las cuales he ganado experiencia tanto en el maquetado de html y css, así como en la programación con Javascript, VueJs y React con el cual tengo mayor experiencia.
+                        { t.text }
                     </Paragraph>
+                    <Subtitle text={ t.subtitle2 } />
                     <Paragraph>
-                        Soy una programador autodidacta, tome interés por la programación ya hace 3 años, pero comencé con el lenguaje de Python;
+                        { t.summary }
                     </Paragraph>
+                    <Subtitle text={ t.subtitle3 } />
+                    <Paragraph>
+                        { t.goal }
+                    </Paragraph>
+                    <CTALink
+                        label={ t.buttons.contact }
+                        icon={'right-arrow-alt'}
+                        action={() => navigate('/contact')}
+                        secondary
+                    />
                 </div>
             </Card>
         </main>
-        <Divider cta={
-            <CTALink
-                label={'Contactame'}
-                icon={'right-arrow-alt'}
-                action={() => navigate('/contact')}
-            />
-        }/>
+        <Divider />
         <section className='skills'>
             <div className="skills__title-section">
                 <Title secondary>
-                    Mis Habilidades
+                    { t.skills.title }
                 </Title>
             </div>
             { skills.map((skill) =>
@@ -76,7 +84,7 @@ const About = () => {
             ) }
             <div className="skills__cta">
                 <CTALink
-                    label={'Descargar Curriculum'}
+                    label={ t.buttons.CV }
                     action={ downloadCV }
                     secondary
                 />

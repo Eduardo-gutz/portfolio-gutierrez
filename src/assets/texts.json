@@ -1,0 +1,44 @@
+{
+    "about": {
+        "title": "Acerca de mí",
+        "text": "Soy Eduardo Gutiérrez Flores, un desarrollador Front End con 2 años de experiencia.",
+        "subtitle1": "¿Quien soy?",
+        "subtitle2": "Un pequeño resumen",
+        "subtitle3": "Mi objetivo",
+        "summary": "Mi historia como desarrollador comienza cuando me interese y tuve mi primer acercamiento a la programación, comencé aprendiendo el lenguaje de python y naturalmente llegue al desarrollo web, donde me enamore del front end, aunque estuve un tiempo alejado del desarrollo, hace casi 2 años comencé a especializarme en Front End, hice algunos proyectos personales para reforzar mis conocimientos y finalmente 6 meses después comencé mi carrera profesional con una empresa de México, donde gane una basta experiencia en el desarrollo web",
+        "goal": "Mi principal objetivo es continuar aprendiendo y desarrollando mis habilidades en el desarrollo web hasta convertirme en un desarrollador fullstack",
+        "buttons": {
+            "contact": "Contáctame",
+            "CV": "Descargar curriculum"
+        },
+        "skills": {
+            "title": "Mis Habilidades"
+        }
+    },
+    "contact": {
+        "title": "Contáctame",
+        "inst": "Envíame un mensaje y me pondré en contacto contigo lo más pronto que pueda",
+        "inputs": {
+            "name": "Tu nombre",
+            "email": "Tu email",
+            "message": "Mensaje",
+            "button": "Enviar Mensaje"
+        },
+        "socials": {
+            "inst": "También me puedes encontrar en"
+        }
+    },
+    "projects": {
+        "title": "Proyectos",
+        "buttons": {
+            "project": "Ver proyecto",
+            "visit": "Visitar",
+            "more": "Más proyectos"
+        },
+        "sections": {
+            "desc": "Descripción",
+            "role": "Roles",
+            "tecs": "Tecnologías"
+        }
+    }
+}

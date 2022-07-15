@@ -5,6 +5,7 @@
     font-size: 2.6rem;
     top: 5rem;
     right: 1.5rem;
+    z-index: 999;
 
     @include md {
         right: calc(50% - 28rem);

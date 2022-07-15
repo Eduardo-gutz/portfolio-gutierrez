@@ -37,11 +37,13 @@ const Navbar = () => {
     
             navigate(link)
         }
+
+        hidenMenu(false)
     }
     return (
-        <nav className="navbar">
-            <Burger onActive={(isActive) => hidenMenu(isActive)}/>
-            <div className={isMenuActive ? "menu active" : 'menu'} style={isMenuActive ? {} : {display: showMenu ? '' : 'none'}} >
+        <nav className="navbar" id="nav">
+            <Burger onActive={(isActive) => hidenMenu(isActive)} isActive={ isMenuActive } />
+            <div className={isMenuActive ? "menu active" : 'menu'} id="menu" style={isMenuActive ? {} : {display: showMenu ? '' : 'none'}} >
                 <ul className="menu__links" ref={linksRef}>
                     {menuItems.map((item, index) =>
                         <li key={ index } onClick={(e) => activeTab(e.target, index, item.link)}>

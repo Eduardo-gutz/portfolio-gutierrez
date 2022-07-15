@@ -6,7 +6,8 @@ import Paragraph from "../../components/paragraph/Paragraph";
 import Title from "../../components/title/Title";
 import { Project } from "../../interfaces/projects"
 import KeyValue from "./components/KeyValue";
-import Subtitle from "./components/Subtitle";
+import Subtitle from "../../components/subtitle/Subtitle";
+import texts from '../../assets/texts.json';
 
 interface ProjectProps {
     project: Project
@@ -16,6 +17,7 @@ interface ProjectProps {
 const ProjectView = ({ project, goback }: ProjectProps) => {
     const [imagesUrlsSelected, setImagesUrlsSlected] = useState<string[]>(project.images.desktop);
     const devicesRef = useRef<HTMLDivElement>(null);
+    const t = texts.projects
 
     const activeDeviceIcon = (target: any, device: 'MOBILE' | 'TAB' | 'DESK') => {
         if(devicesRef.current) {
@@ -58,7 +60,7 @@ const ProjectView = ({ project, goback }: ProjectProps) => {
                 <article className="details">
                     <span className="details__cta">
                         <CTALink
-                            label={'Visitar'}
+                            label={ t.buttons.visit }
                             icon={'right-arrow-alt'}
                             action={() => navigateOut(project.link)}
                             secondary
@@ -67,17 +69,17 @@ const ProjectView = ({ project, goback }: ProjectProps) => {
                     <Title>
                         { project.projectName }
                     </Title>
-                    <Subtitle text={ 'Descripción' }/>
+                    <Subtitle text={ t.sections.desc }/>
                     <Paragraph>
                         { `${project.description}` }
                     </Paragraph>
-                    <Subtitle text={ 'Tecnologias' }/>
+                    <Subtitle text={ t.sections.tecs }/>
                     <ul className="paragraph">
                         { project.tecnologies.map((tec) => (
                             <KeyValue label={tec.type} value={tec.name} link={tec.link} />
                         )) }
                     </ul>
-                    <Subtitle text={ 'Roles' }/>
+                    <Subtitle text={ t.sections.role }/>
                     <ul className="paragraph">
                         { project.roles.map((role) => (
                             <KeyValue label={role.role} value={role.description} />

@@ -6,15 +6,15 @@
     justify-content: center;
     width: 93%;
     object-fit: cover;
-    max-width: 80rem;
+    max-width: 65rem;
 
     margin: 0 auto;
     z-index: 2;
 
     @include md {
         justify-content: space-around;
-        align-items: flex-start;
-        padding-top: 8rem;
+        align-items: flex-end;
+        padding-top: 6rem;
     }
 
     img {
@@ -27,14 +27,23 @@
             margin-top: 1.12rem;
         }
     }
-
+    
     &__text {
+        position: relative;
         padding: 2rem;
-        max-width: 33.8rem;
+        padding-bottom: 5rem;
+        max-width: 35.8rem;
 
         @include md {
             padding: 2.5rem;
+            padding-bottom: 5rem;
         }
+    }
+
+    .cta {
+        position: absolute;
+        bottom: 1.5rem;
+        right: 2rem;
     }
 
     .card {

@@ -9,7 +9,11 @@
     height: 26.75rem;
 
     @include lg {
-    background: url(../../../assets/svg/waveaboutme.svg) bottom left/100% no-repeat;
+        background: url(../../../assets/svg/waveaboutme.svg) bottom left/100% no-repeat;
+    }
+
+    @include xl {
+        background: url(../../../assets/svg/wavexl.svg) bottom left/100% no-repeat;
     }
 
     &__cta {

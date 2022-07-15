@@ -14,6 +14,7 @@ import emailjs from '@emailjs/browser';
 import { enviroments } from "../../enviroment/global";
 import Alert from "../../components/alert/Alert";
 import { useState } from "react";
+import texts from '../../assets/texts.json';
 
 interface formData {
     name: string
@@ -23,7 +24,8 @@ interface formData {
 
 const Contact = () => {
     const { control, handleSubmit,reset } = useForm<formData>();
-    const [ sendMessage, setSendMessage ] = useState<string>('')
+    const [ sendMessage, setSendMessage ] = useState<string>('');
+    const t = texts.contact
 
     const onFormSubmit = async (data: formData) => {
         try{
@@ -73,13 +75,13 @@ const Contact = () => {
                 type='error'
             />
             <Title>
-                Contactame
+                { t.title }
             </Title>
             <Card>
                 <div className="form">
                     <form className="form__fields" onSubmit={ handleSubmit(onFormSubmit) }>
                         <Paragraph>
-                            Enviame un mensage y me contactare contigo lo mas rapido posible
+                            { t.inst }
                         </Paragraph>
                         <Controller
                             name='name'
@@ -91,7 +93,7 @@ const Contact = () => {
                             }) =>
                                 <Input
                                     name={ name }
-                                    label={ 'Tu nombre:' }
+                                    label={ t.inputs.name + ':' }
                                     value={value}
                                     onChange={ onChange }
                                     error={ error?.message }
@@ -114,7 +116,7 @@ const Contact = () => {
                             }) =>
                                 <Input
                                     name={ name }
-                                    label={ 'Tu email:' }
+                                    label={ t.inputs.email + ':' }
                                     value={value}
                                     onChange={ onChange }
                                     error={ error?.message }
@@ -124,14 +126,14 @@ const Contact = () => {
                         <Controller
                             name='message'
                             control={ control }
-                            rules={{ required: 'Requerido', minLength: {value: 80, message: 'Tu mensaje debe ser tener al menos 80 caracteres'} }}
+                            rules={{ required: 'Requerido' }}
                             render={({
                                 field: { onChange, value, name },
                                 fieldState: { error }
                             }) =>
                                 <TextArea
                                     name={ name }
-                                    label={"Mensaje:"}
+                                    label={ t.inputs.message + ':' }
                                     value={ value }
                                     onChange={ onChange }
                                     error={ error?.message }
@@ -139,7 +141,7 @@ const Contact = () => {
                             }
                         />
                         <CTALink
-                            label={"Enviar mensaje"}
+                            label={ t.inputs.button }
                             secondary
                             action={() => handleSubmit(onFormSubmit)}
                         />
@@ -161,7 +163,7 @@ const Contact = () => {
                             </a>
                         </div>
                         <CTALink
-                            label={'Descargar Curriculum'}
+                            label={ texts.about.buttons.CV }
                             action={() => downloadCV()}
                             secondary
                         />
